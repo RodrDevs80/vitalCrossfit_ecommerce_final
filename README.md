@@ -1,25 +1,41 @@
 # E-commerce Deportivo "VitalCrossfit" - Documentación
 
-## 📋 Tabla de Contenidos
+## 🎥 Video Demostrativo
 
-1. [Descripción General](#descripción-general)
-2. [Arquitectura del Sistema](#arquitectura-del-sistema)
-3. [Tecnologías Utilizadas](#tecnologías-utilizadas)
-4. [Estructura del Proyecto](#estructura-del-proyecto)
-5. [Instalación y Configuración](#instalación-y-configuración)
-6. [API Documentation](#api-documentation)
-7. [Base de Datos](#base-de-datos)
-8. [Autenticación y Autorización](#autenticación-y-autorización)
-9. [Características Principales](#características-principales)
-10. [Despliegue](#despliegue)
-11. [Scripts y Comandos](#scripts-y-comandos)
-12. [Contribución](#contribución)
+Para complementar esta documentación, hemos preparado un video demostrativo que muestra las principales funcionalidades de VitalCrossfit:
+
+[![Demo VitalCrossfit - E-commerce Deportivo](https://img.youtube.com/vi/JSJEFx--G4U/0.jpg)](https://youtu.be/JSJEFx--G4U)
+
+**Ver video completo: [https://youtu.be/JSJEFx--G4U](https://youtu.be/JSJEFx--G4U)**
+
+### 📋 Contenido del Video
+
+- **00:00-02:00**: Introducción y visión general del proyecto
+- **02:00-05:00**: Panel de administración y gestión de productos
+- **05:00-08:00**: Funcionalidades para usuarios y proceso de compra
+- **08:00-10:00**: Asistente IA especializado en fitness
+- **10:00-12:00**: Sistema de cupones y características avanzadas
 
 ---
 
+📋 Tabla de Contenidos
+
+- Descripción General
+- Arquitectura del Sistema
+- Tecnologías Utilizadas
+- Estructura del Proyecto
+- Instalación y Configuración
+- API Documentation
+- Base de Datos
+- Autenticación y Autorización
+- Características Principales
+- Despliegue
+- Scripts y Comandos
+- Contribución
+
 ## 🚀 Descripción General
 
-**VitalCrossfit** es una plataforma de e-commerce especializada en productos deportivos, fitness y crossfit. El sistema está construido con una arquitectura full-stack moderna que incluye un backend robusto en Node.js/Express y un frontend dinámico en React.
+VitalCrossfit es una plataforma de e-commerce especializada en productos deportivos, fitness y crossfit. El sistema está construido con una arquitectura full-stack moderna que incluye un backend robusto en Node.js/Express y un frontend dinámico en React.
 
 ### 🎯 Objetivos del Proyecto
 
@@ -28,8 +44,6 @@
 - Implementar un sistema de cupones y descuentos
 - Integrar inteligencia artificial para asistencia especializada
 - Garantizar seguridad y escalabilidad
-
----
 
 ## 🏗️ Arquitectura del Sistema
 
@@ -51,8 +65,6 @@ Cliente (React) ←→ API Gateway (Express) ←→ Servicios ←→ Base de Dat
 - **Autenticación**: JWT con roles múltiples
 - **Almacenamiento**: Sistema de archivos local con Multer
 - **IA**: Integración con Groq AI
-
----
 
 ## 🛠️ Tecnologías Utilizadas
 
@@ -90,11 +102,9 @@ Cliente (React) ←→ API Gateway (Express) ←→ Servicios ←→ Base de Dat
 - **JWT**: Tokens de autenticación
 - **Bcrypt**: Encriptación de contraseñas
 
----
-
 ## 📁 Estructura del Proyecto
 
-### Backend (`/backEx`)
+### Backend (/backEx)
 
 ```
 backEx/
@@ -119,7 +129,7 @@ backEx/
 └── index.js                 # Punto de entrada
 ```
 
-### Frontend (`/frontEx`)
+### Frontend (/frontEx)
 
 ```
 frontEx/
@@ -134,8 +144,6 @@ frontEx/
 ├── public/                  # Archivos estáticos
 └── package.json
 ```
-
----
 
 ## ⚙️ Instalación y Configuración
 
@@ -164,7 +172,7 @@ pnpm install
 cp .env.example .env
 ```
 
-**Configuración de `.env`:**
+Configuración de .env:
 
 ```env
 # Servidor
@@ -236,72 +244,70 @@ La aplicación estará disponible en:
 - Frontend: http://localhost:5173
 - Backend API: http://localhost:3000
 
----
-
 ## 🔌 API Documentation
 
 ### Endpoints Principales
 
-#### Autenticación (`/api/v1/auth`)
+#### Autenticación (/api/v1/auth)
 
-| Método | Endpoint                 | Descripción                          |
-| ------ | ------------------------ | ------------------------------------ |
-| POST   | `/register`              | Registro de usuarios/administradores |
-| POST   | `/login`                 | Inicio de sesión                     |
-| POST   | `/refresh-token-usuario` | Refrescar token usuario              |
-| POST   | `/refresh-token-admin`   | Refrescar token admin                |
+| Método | Endpoint               | Descripción                          |
+| ------ | ---------------------- | ------------------------------------ |
+| POST   | /register              | Registro de usuarios/administradores |
+| POST   | /login                 | Inicio de sesión                     |
+| POST   | /refresh-token-usuario | Refrescar token usuario              |
+| POST   | /refresh-token-admin   | Refrescar token admin                |
 
-#### Productos (`/api/v1/productos`)
+#### Productos (/api/v1/productos)
 
-| Método | Endpoint   | Descripción                 |
-| ------ | ---------- | --------------------------- |
-| GET    | `/all`     | Listar todos los productos  |
-| GET    | `/activos` | Productos activos           |
-| GET    | `/:id`     | Obtener producto por ID     |
-| POST   | `/`        | Crear producto (con imagen) |
-| PUT    | `/:id`     | Actualizar producto         |
-| DELETE | `/:id`     | Eliminar producto           |
-| PATCH  | `/:id`     | Cambiar estado (lógico)     |
+| Método | Endpoint | Descripción                 |
+| ------ | -------- | --------------------------- |
+| GET    | /all     | Listar todos los productos  |
+| GET    | /activos | Productos activos           |
+| GET    | /:id     | Obtener producto por ID     |
+| POST   | /        | Crear producto (con imagen) |
+| PUT    | /:id     | Actualizar producto         |
+| DELETE | /:id     | Eliminar producto           |
+| PATCH  | /:id     | Cambiar estado (lógico)     |
 
-#### Categorías (`/api/v1/categorias`)
+#### Categorías (/api/v1/categorias)
 
-| Método | Endpoint   | Descripción          |
-| ------ | ---------- | -------------------- |
-| GET    | `/all`     | Listar categorías    |
-| GET    | `/activos` | Categorías activas   |
-| POST   | `/`        | Crear categoría      |
-| PUT    | `/:id`     | Actualizar categoría |
+| Método | Endpoint | Descripción          |
+| ------ | -------- | -------------------- |
+| GET    | /all     | Listar categorías    |
+| GET    | /activos | Categorías activas   |
+| POST   | /        | Crear categoría      |
+| PUT    | /:id     | Actualizar categoría |
 
-#### Usuarios (`/api/v1/usuarios`)
+#### Usuarios (/api/v1/usuarios)
 
-| Método | Endpoint   | Descripción        | Permisos    |
-| ------ | ---------- | ------------------ | ----------- |
-| GET    | `/all`     | Todos los usuarios | Admin       |
-| GET    | `/activos` | Usuarios activos   | Admin       |
-| POST   | `/`        | Crear usuario      | Público     |
-| PUT    | `/:id`     | Actualizar usuario | Owner/Admin |
+| Método | Endpoint | Descripción        | Permisos    |
+| ------ | -------- | ------------------ | ----------- |
+| GET    | /all     | Todos los usuarios | Admin       |
+| GET    | /activos | Usuarios activos   | Admin       |
+| POST   | /        | Crear usuario      | Público     |
+| PUT    | /:id     | Actualizar usuario | Owner/Admin |
 
-#### Administradores (`/api/v1/administradores`)
+#### Administradores (/api/v1/administradores)
 
 | Método | Endpoint | Descripción              | Permisos   |
 | ------ | -------- | ------------------------ | ---------- |
-| GET    | `/`      | Listar administradores   | Admin      |
-| POST   | `/`      | Crear administrador      | Full Admin |
-| PUT    | `/:id`   | Actualizar administrador | Admin      |
+| GET    | /        | Listar administradores   | Admin      |
+| POST   | /        | Crear administrador      | Full Admin |
+| PUT    | /:id     | Actualizar administrador | Admin      |
 
-#### Chatbot IA (`/api/v1/chatbot`)
+#### Chatbot IA (/api/v1/chatbot)
 
 | Método | Endpoint | Descripción              |
 | ------ | -------- | ------------------------ |
-| POST   | `/`      | Consulta al asistente IA |
+| POST   | /        | Consulta al asistente IA |
 
-#### Archivos (`/api/v1/files`)
+#### Archivos (/api/v1/files)
 
-| Método | Endpoint              | Descripción          |
-| ------ | --------------------- | -------------------- |
-| POST   | `/upload/:idProducto` | Subir archivo        |
-| GET    | `/:idProducto`        | Archivos de producto |
-| GET    | `/download/:fileName` | Descargar archivo    |
+| Método | Endpoint            | Descripción          |
+| ------ | ------------------- | -------------------- |
+| POST   | /upload/:idProducto | Subir archivo        |
+| GET    | /:idProducto        | Archivos de producto |
+| GET    | /download/:fileName | Descargar archivo    |
 
 ### Ejemplos de Uso
 
@@ -334,13 +340,11 @@ const response = await fetch("/api/v1/productos", {
 });
 ```
 
----
-
 ## 🗃️ Base de Datos
 
 ### Modelos Principales
 
-#### Usuario
+**Usuario**
 
 ```javascript
 {
@@ -354,7 +358,7 @@ const response = await fetch("/api/v1/productos", {
 }
 ```
 
-#### Producto
+**Producto**
 
 ```javascript
 {
@@ -371,7 +375,7 @@ const response = await fetch("/api/v1/productos", {
 }
 ```
 
-#### Relaciones
+### Relaciones
 
 - Usuario (1) ↔ (1) Carrito
 - Usuario (1) ↔ (N) Orden
@@ -388,19 +392,17 @@ Usuario.scope("withPassword"); // Incluir contraseña
 Producto.scope("activos"); // Productos activos
 ```
 
----
-
 ## 🔐 Autenticación y Autorización
 
 ### Sistema de Roles
 
-#### Roles de Usuario
+**Roles de Usuario**
 
 - **Bronce**: Usuario básico (gasto < $100.000)
 - **Plata**: Usuario medio ($100.000 - $500.000)
 - **Oro**: Usuario premium (> $500.000)
 
-#### Roles de Administrador
+**Roles de Administrador**
 
 - **Admin**: Gestión básica
 - **Full Admin**: Acceso completo
@@ -430,60 +432,56 @@ router.get(
 - **Refresh Token**: 7 días de duración
 - **Algoritmo**: HS256
 
----
-
 ## ✨ Características Principales
 
 ### 1. Gestión de Productos
 
-- ✅ CRUD completo de productos
-- ✅ Subida múltiple de imágenes
-- ✅ Categorización
-- ✅ Sistema de ofertas y descuentos
-- ✅ Búsqueda y filtrado avanzado
+✅ CRUD completo de productos  
+✅ Subida múltiple de imágenes  
+✅ Categorización  
+✅ Sistema de ofertas y descuentos  
+✅ Búsqueda y filtrado avanzado
 
 ### 2. Sistema de Usuarios
 
-- ✅ Registro y autenticación segura
-- ✅ Roles y permisos
-- ✅ Gestión de carrito de compras
-- ✅ Historial de pedidos
+✅ Registro y autenticación segura  
+✅ Roles y permisos  
+✅ Gestión de carrito de compras  
+✅ Historial de pedidos
 
 ### 3. Panel de Administración
 
-- ✅ Dashboard con métricas
-- ✅ Gestión de categorías
-- ✅ Control de cupones
-- ✅ Administración de usuarios
+✅ Dashboard con métricas  
+✅ Gestión de categorías  
+✅ Control de cupones  
+✅ Administración de usuarios
 
 ### 4. Asistente IA Especializado
 
-- ✅ Chatbot para consultas de fitness
-- ✅ Temáticas limitadas a entrenamiento
-- ✅ Cache de respuestas
-- ✅ Rate limiting
+✅ Chatbot para consultas de fitness  
+✅ Temáticas limitadas a entrenamiento  
+✅ Cache de respuestas  
+✅ Rate limiting
 
 ### 5. Sistema de Archivos
 
-- ✅ Upload seguro de imágenes
-- ✅ Validación de tipos y tamaños
-- ✅ Servicio de archivos estáticos
-- ✅ Eliminación en cascada
+✅ Upload seguro de imágenes  
+✅ Validación de tipos y tamaños  
+✅ Servicio de archivos estáticos  
+✅ Eliminación en cascada
 
 ### 6. Comercio Electrónico
 
-- ✅ Carrito de compras
-- ✅ Proceso de checkout
-- ✅ Sistema de cupones
-- ✅ Gestión de inventario
-
----
+✅ Carrito de compras  
+✅ Proceso de checkout  
+✅ Sistema de cupones  
+✅ Gestión de inventario
 
 ## 🚀 Despliegue
 
 ### Configuración para Producción
 
-**Variables de Entorno de Producción:**
+Variables de Entorno de Producción:
 
 ```env
 NODE_ENV=production
@@ -508,11 +506,9 @@ JWT_SECRET=very_strong_jwt_secret_production
 
 ### Monitoreo
 
-- Endpoint de salud: `/health`
+- Endpoint de salud: /health
 - Logs estructurados
 - Manejo centralizado de errores
-
----
 
 ## 📜 Scripts y Comandos
 
@@ -541,20 +537,16 @@ node src/scripts/syripts.js
 await sequelize.sync({ force: true });
 ```
 
----
-
 ## 🤝 Contribución
 
 ### Estructura de Commits
 
-```
-feat: Nueva funcionalidad
-fix: Corrección de bugs
-docs: Documentación
-style: Cambios de formato
-refactor: Refactorización
-test: Pruebas
-```
+- `feat`: Nueva funcionalidad
+- `fix`: Corrección de bugs
+- `docs`: Documentación
+- `style`: Cambios de formato
+- `refactor`: Refactorización
+- `test`: Pruebas
 
 ### Guías de Estilo
 
@@ -563,24 +555,20 @@ test: Pruebas
 - **Base de Datos**: Sequelize con validaciones
 - **API**: RESTful con respuestas estandarizadas
 
----
-
 ## 📞 Soporte y Contacto
 
 Para issues y soporte:
 
-1. Revisar documentación
-2. Verificar logs del servidor
-3. Revisar respuestas de la API
-4. Contactar al equipo de desarrollo
-
----
+- Revisar documentación
+- Verificar logs del servidor
+- Revisar respuestas de la API
+- Contactar al equipo de desarrollo
 
 ## 🔄 Estado del Proyecto
 
-**Versión**: 1.0.0  
-**Estado**: Desarrollo Activo  
-**Última Actualización**: octubre 2025
+- **Versión**: 1.0.0
+- **Estado**: Desarrollo Activo
+- **Última Actualización**: octubre 2025
 
 ### Próximas Características
 
@@ -590,16 +578,13 @@ Para issues y soporte:
 - [ ] App móvil nativa
 - [ ] Analytics avanzado
 
----
-
 ## 📄 Licencia
 
-Este proyecto está bajo la Licencia MIT. Ver archivo `LICENSE` para más detalles.
+Este proyecto está bajo la Licencia MIT. Ver archivo LICENSE para más detalles.
+
+**Creador:**  
+Carlos E. Rodriguez
 
 ---
 
-## Creador:
-
-Carlos E. Rodriguez
-
-**VitalCrossfit** - Potenciando tu entrenamiento, un producto a la vez. 💪
+**VitalCrossfit - Potenciando tu entrenamiento, un producto a la vez.** 💪
