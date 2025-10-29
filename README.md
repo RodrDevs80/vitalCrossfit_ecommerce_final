@@ -396,9 +396,9 @@ Producto.scope("activos"); // Productos activos
 
 #### Roles de Usuario
 
-- **Bronce**: Usuario básico (gasto < $100)
-- **Plata**: Usuario medio ($100 - $500)
-- **Oro**: Usuario premium (> $500)
+- **Bronce**: Usuario básico (gasto < $100.000)
+- **Plata**: Usuario medio ($100.000 - $500.000)
+- **Oro**: Usuario premium (> $500.000)
 
 #### Roles de Administrador
 
@@ -580,7 +580,7 @@ Para issues y soporte:
 
 **Versión**: 1.0.0  
 **Estado**: Desarrollo Activo  
-**Última Actualización**: Diciembre 2024
+**Última Actualización**: octubre 2025
 
 ### Próximas Características
 
