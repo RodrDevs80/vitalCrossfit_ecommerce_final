@@ -41,8 +41,8 @@ Para complementar esta documentación, hemos preparado videos demostrativos que 
 - Tecnologías Utilizadas
 - Estructura del Proyecto
 - Instalación y Configuración
-- API Documentation
 - Base de Datos
+- API Documentation
 - Autenticación y Autorización
 - Características Principales
 - Despliegue
@@ -136,6 +136,8 @@ backEx/
 │   ├── models/               # Modelos de Sequelize
 │   ├── routes/               # Definición de rutas
 │   ├── scripts/              # Scripts de base de datos
+│   │   ├── syripts.js        # Script principal de inicialización
+│   │   └── DBvitalCrossFit.sql # Script SQL completo de la base de datos
 │   ├── servicios/            # Servicios reutilizables
 │   └── util/                 # Utilidades
 ├── uploads/                  # Archivos subidos
@@ -233,13 +235,25 @@ cp .env.example .env
 ```sql
 -- Crear base de datos
 CREATE DATABASE vitalcrossfit CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+```
 
--- Ejecutar sincronización (opcional)
+### 5. Ejecutar Script de Inicialización
+
+```bash
 cd backEx
+
+# Ejecutar script de inicialización de la base de datos
 node src/scripts/syripts.js
 ```
 
-### 5. Ejecutar la Aplicación
+**⚠️ Importante:** El script `syripts.js` realiza las siguientes acciones:
+
+- Sincroniza todos los modelos con la base de datos
+- Crea las tablas necesarias
+- Inserta datos de ejemplo para categorías, productos y usuarios
+- Configura relaciones entre modelos
+
+### 6. Ejecutar la Aplicación
 
 **Backend:**
 
@@ -259,6 +273,127 @@ La aplicación estará disponible en:
 
 - Frontend: http://localhost:5173
 - Backend API: http://localhost:3000
+
+## 🗃️ Base de Datos
+
+### Estructura de la Base de Datos
+
+La aplicación utiliza MySQL como sistema de gestión de base de datos. El esquema completo se encuentra definido en el archivo SQL:
+
+```
+backEx/src/scripts/DBvitalCrossFit.sql
+```
+
+### Recrear la Base de Datos
+
+#### Método 1: Ejecutar Script SQL (Recomendado)
+
+1. **Acceder a MySQL:**
+
+   ```bash
+   mysql -u root -p
+   ```
+
+2. **Ejecutar el script completo:**
+
+   ```sql
+   SOURCE ruta/completa/hacia/backEx/src/scripts/DBvitalCrossFit.sql
+   ```
+
+   _Ejemplo en Windows:_
+
+   ```sql
+   SOURCE C:\Users\TuUsuario\proyecto\backEx\src\scripts\DBvitalCrossFit.sql
+   ```
+
+   _Ejemplo en Linux/Mac:_
+
+   ```sql
+   SOURCE /home/tuusuario/proyecto/backEx/src/scripts/DBvitalCrossFit.sql
+   ```
+
+#### Método 2: Importar desde Línea de Comandos
+
+```bash
+mysql -u root -p vitalcrossfit < backEx/src/scripts/DBvitalCrossFit.sql
+```
+
+#### Método 3: Usar Sequelize Sync (Desarrollo)
+
+Como alternativa, puedes usar la sincronización automática de Sequelize (solo para desarrollo):
+
+```javascript
+// En backEx/index.js, descomenta la línea:
+await sequelize.sync({ alter: true });
+```
+
+**⚠️ Importante:** Este método solo en desarrollo, ya que puede modificar la estructura pero no incluye datos de prueba.
+
+### Contenido del Script SQL
+
+El archivo `DBvitalCrossFit.sql` incluye:
+
+- ✅ Creación de la base de datos `vital_crossfit_tienda2`
+- ✅ Definición completa de todas las tablas
+- ✅ Relaciones y constraints foreign key
+- ✅ Datos de prueba para:
+  - Administradores
+  - Categorías
+  - Productos
+  - Usuarios
+  - Cupones de descuento
+  - Y más...
+
+### Verificación
+
+Después de ejecutar el script, verifica que la base de datos se creó correctamente:
+
+```sql
+USE vital_crossfit_tienda2;
+SHOW TABLES;
+SELECT COUNT(*) as total_tablas FROM information_schema.tables
+WHERE table_schema = 'vital_crossfit_tienda2';
+```
+
+### Resolución de Problemas
+
+**Error de permisos:**
+
+```sql
+GRANT ALL PRIVILEGES ON vital_crossfit_tienda2.* TO 'tu_usuario'@'localhost';
+FLUSH PRIVILEGES;
+```
+
+**Error de encoding:**
+Asegúrate de que MySQL use UTF-8:
+
+```sql
+SET NAMES utf8mb4;
+```
+
+### Backup de Base de Datos
+
+Para crear un backup de la base de datos:
+
+```bash
+mysqldump -u root -p vital_crossfit_tienda2 > backup_vitalcrossfit_$(date +%Y%m%d).sql
+```
+
+### Modelos y Esquema
+
+La base de datos contiene las siguientes tablas principales:
+
+- `administradores` - Gestión de administradores del sistema
+- `usuarios` - Usuarios registrados en la plataforma
+- `categorias` - Categorías de productos
+- `productos` - Catálogo de productos
+- `carritos` - Carritos de compra de usuarios
+- `ordenes` - Órdenes de compra
+- `cuponesdescuento` - Sistema de cupones
+- `archivo` - Archivos e imágenes de productos
+- `mensajes` - Reseñas y comentarios de productos
+
+Cada tabla incluye timestamps automáticos (`fechaCreacion`, `fechaActualizacion`) y campos de estado (`activo`) para borrado lógico.
 
 ## 🔌 API Documentation
 
@@ -354,58 +489,6 @@ const response = await fetch("/api/v1/productos", {
   method: "POST",
   body: formData,
 });
-```
-
-## 🗃️ Base de Datos
-
-### Modelos Principales
-
-**Usuario**
-
-```javascript
-{
-  id: INTEGER (PK, Auto Increment),
-  nombre: STRING(50),
-  apellido: STRING(50),
-  email: STRING (Unique),
-  contrasena: STRING (Hash),
-  rol: ENUM('bronce', 'plata', 'oro'),
-  activo: BOOLEAN (Default: true)
-}
-```
-
-**Producto**
-
-```javascript
-{
-  id: INTEGER (PK, Auto Increment),
-  nombre: STRING(50),
-  descripcion: STRING,
-  precio: DECIMAL(10,2),
-  imagenUrl: STRING,
-  especificaciones: STRING,
-  idCategoria: INTEGER (FK),
-  oferta: BOOLEAN,
-  descuento: INTEGER,
-  activo: BOOLEAN
-}
-```
-
-### Relaciones
-
-- Usuario (1) ↔ (1) Carrito
-- Usuario (1) ↔ (N) Orden
-- Categoría (1) ↔ (N) Producto
-- Producto (1) ↔ (N) Archivo
-- Producto (1) ↔ (N) CuponDescuento
-
-### Scopes de Sequelize
-
-```javascript
-// Scopes predefinidos
-Usuario.scope("activos"); // Usuarios activos
-Usuario.scope("withPassword"); // Incluir contraseña
-Producto.scope("activos"); // Productos activos
 ```
 
 ## 🔐 Autenticación y Autorización
@@ -546,12 +629,21 @@ pnpm run preview  # Preview del build
 ### Base de Datos
 
 ```bash
-# Sincronizar modelos
+# Sincronizar modelos y cargar datos iniciales
 node src/scripts/syripts.js
+
+# Ejecutar script SQL completo
+mysql -u root -p < src/scripts/DBvitalCrossFit.sql
 
 # Reset completo (¡CUIDADO!)
 await sequelize.sync({ force: true });
 ```
+
+**📝 Nota sobre los Scripts de Base de Datos:**
+
+- **`syripts.js`**: Script de Node.js que usa Sequelize para sincronizar modelos
+- **`DBvitalCrossFit.sql`**: Script SQL completo con toda la estructura y datos de prueba
+- Ambos métodos son válidos, el script SQL es más completo e incluye datos de prueba realistas
 
 ## 🤝 Contribución
 
