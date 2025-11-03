@@ -1,14 +1,30 @@
 # E-commerce Deportivo "VitalCrossfit" - Documentación
 
-## 🎥 Video Demostrativo
+## 🎥 Videos Demostrativos
 
-Para complementar esta documentación, hemos preparado un video demostrativo que muestra las principales funcionalidades de VitalCrossfit:
+Para complementar esta documentación, hemos preparado videos demostrativos que muestran las principales funcionalidades de VitalCrossfit:
+
+### 📱 Video de Publicidad - App en Acción
+
+[![Publicidad VitalCrossfit - E-commerce Deportivo](https://img.youtube.com/vi/3WsJLowIr34/0.jpg)](https://youtu.be/3WsJLowIr34)
+
+**Ver video de publicidad: [https://youtu.be/3WsJLowIr34](https://youtu.be/3WsJLowIr34)**
+
+### 🎬 Video Demostrativo Completo
 
 [![Demo VitalCrossfit - E-commerce Deportivo](https://img.youtube.com/vi/JSJEFx--G4U/0.jpg)](https://youtu.be/JSJEFx--G4U)
 
-**Ver video completo: [https://youtu.be/JSJEFx--G4U](https://youtu.be/JSJEFx--G4U)**
+**Ver video demostrativo completo: [https://youtu.be/JSJEFx--G4U](https://youtu.be/JSJEFx--G4U)**
 
-### 📋 Contenido del Video
+### 📋 Contenido de los Videos
+
+**Video de Publicidad (0:30)**
+
+- Vista general de la aplicación en acción
+- Interfaz moderna y atractiva
+- Experiencia de usuario fluida
+
+**Video Demostrativo Completo**
 
 - **00:00-02:00**: Introducción y visión general del proyecto
 - **02:00-05:00**: Panel de administración y gestión de productos
