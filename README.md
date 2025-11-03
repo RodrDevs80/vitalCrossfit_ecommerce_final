@@ -16,6 +16,18 @@ Para complementar esta documentación, hemos preparado videos demostrativos que 
 
 **Ver video demostrativo completo: [https://youtu.be/JSJEFx--G4U](https://youtu.be/JSJEFx--G4U)**
 
+### 🌐 Presentación Web del Proyecto
+
+**📊 Sitio web de presentación: [https://rodrdevs80.github.io/presentacion_vitalCrossfit_html/](https://rodrdevs80.github.io/presentacion_vitalCrossfit_html/)**
+
+Esta página web incluye:
+
+- Información detallada sobre el proyecto
+- Características principales
+- Tecnologías utilizadas
+- Capturas de pantalla
+- Demostraciones visuales
+
 ### 📋 Contenido de los Videos
 
 **Video de Publicidad (0:30)**
@@ -273,6 +285,7 @@ La aplicación estará disponible en:
 
 - Frontend: http://localhost:5173
 - Backend API: http://localhost:3000
+- Presentación Web: https://rodrdevs80.github.io/presentacion_vitalCrossfit_html/
 
 ## 🗃️ Base de Datos
 
